@@ -17,11 +17,9 @@ class Solution:
             #if current window is greater than k we try to minimize the window by popping from left
             # we pop and maintain
             cur=-1
-            while inc_queue and (total - inc_queue[0][0]) >=k:
+            while inc_queue and (inc_queue[-1][0] - inc_queue[0][0]) >=k:
                 cur = inc_queue[0][1]
                 inc_queue.popleft()
-                
-
             if cur!=-1:
                 result=min(result,right-cur)
             
