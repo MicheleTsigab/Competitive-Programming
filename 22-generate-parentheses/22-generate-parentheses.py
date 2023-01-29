@@ -19,7 +19,6 @@ class Solution:
                 par_set.append(')')
                 generate(op,cl-1,par_set)
                 par_set.pop()
-                
         generate(n,n,[])    
         return res
         
