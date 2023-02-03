@@ -1,0 +1,1 @@
+similar to combinatorial problem, we choose or not choose, for each k subsets, use used variable to track which index is used
