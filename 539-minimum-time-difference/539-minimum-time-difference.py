@@ -8,18 +8,19 @@ class Solution:
         last_seen = -1
         min_diff = inf
         # compute seen max and min to calculate last edge case where the times are in frist and last
-        min_time = inf 
-        max_time = -inf
+        # min_time = inf 
+        # max_time = -inf
+        count +=count
         for i in range(len(count)):
             if count[i]>1:
                 return 0
             elif count[i]==1:
-                min_time = min(min_time,i)
-                max_time = max(max_time,i)
+                # min_time = min(min_time,i)
+                # max_time = max(max_time,i)
                 if last_seen != -1:
                     min_diff= min(min_diff,i - last_seen)
                 last_seen = i
         
-        min_diff= min(min_diff,24*60 - max_time + min_time)
+        # min_diff= min(min_diff,24*60 - max_time + min_time)
         
         return min_diff
