@@ -13,7 +13,7 @@ class Solution:
                 j-=1
             
             if i<=j and nums[i] + nums[j] <= target:
-                res += pow(2,(j-i) , mod)
+                res += 2**(j-i)
                 res %= mod
         
         return res
