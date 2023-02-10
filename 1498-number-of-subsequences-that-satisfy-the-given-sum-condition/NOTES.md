@@ -1,0 +1,1 @@
+sort, for each min(left) start from right most and see if sum(min, right)<=target, if so calculate the number of subsequence formed as 2**(window length excluding current elemen r-l)
