@@ -1,0 +1,2 @@
+make two arr that are ideal alternating, with length twice as the original e.g if len(s)==5,
+ideal are one starting by zero and other by one, 01010   10101 ,to make it simipler to compare we make each twice their length and using slidding window, we comapare the diff with s.
