@@ -4,7 +4,7 @@ class Solution:
         trainers.sort()
         count = 0
         right = 0
-        print(trainers)
+        #print(trainers)
         for left in range(len(players)):
             while right < len(trainers) and players[left] > trainers[right]:
                 right += 1
