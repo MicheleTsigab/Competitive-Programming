@@ -1,33 +1,49 @@
 class Solution:
     def rearrangeBarcodes(self, barcodes: List[int]) -> List[int]:
-
-        """
-         [1,1,1,2,2,2]
-         1: 3
-         2: 3
-          0,1,2,3,4,5,6,7
-         [1,0,1,0,1,0,1,0]
-         
-         i=0
-                p       s
-        """
-        count = Counter(barcodes)
-        pq = [(-v,n) for n,v in count.items()]
-        heapq.heapify(pq)
-        result =[0] * len(barcodes)
-        k = 0
+        #O(n) approach
+        count = [0] * (max(barcodes) + 1)
+        num,freq = 0,0
+        for i in barcodes:
+            count[i] += 1
+            if count[i] > freq:
+                freq = count[i]
+                num = i
+        count[num] = 0 #
         length = len(barcodes)
-        prev_count=1
-        i = 0
-        while k < len(barcodes):
-            c,n = heapq.heappop(pq)
+        result =[0] * length
+        cur_size,prev_count,i = 0,0,0
+        
+        while cur_size < length:
+            c,n = freq, num #c - count of a number n
+            num, freq = len(count) - 1, count.pop()
             for _ in range(abs(c)):
                 if i >= length:
-                    i = length
-                    i = (i % length) + prev_count
-                    prev_count+=1
+                    prev_count +=1
+                    i = prev_count
                 result[i]=n
                 i+=2
-                k+=1
+                cur_size+=1
             
         return result
+#o(nlogn) approach        
+#         #frequency
+#         count = Counter(barcodes)
+        
+#         #max heap to track which is the current most frequent element
+#         pq = [(-v,n) for n,v in count.items()]
+#         heapq.heapify(pq) 
+#         length = len(barcodes)
+#         result =[0] * length
+#         cur_size,prev_count,i = 0,0,0
+        
+#         while cur_size < length:
+#             c,n = heapq.heappop(pq) #c - count of a number n
+#             for _ in range(abs(c)):
+#                 if i >= length:
+#                     prev_count +=1
+#                     i = prev_count
+#                 result[i]=n
+#                 i+=2
+#                 cur_size+=1
+            
+#         return result
