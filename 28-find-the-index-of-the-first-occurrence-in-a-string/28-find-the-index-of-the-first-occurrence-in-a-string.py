@@ -1,10 +1,16 @@
 class Solution:
     def strStr(self, haystack: str, needle: str) -> int:
-        for hay in range(len(haystack) - len(needle) + 1):
-            pointer_n = 0
-            while pointer_n < len(needle) and haystack[hay]==needle[pointer_n]:
-                hay+=1
-                pointer_n+=1
-            if pointer_n == len(needle):
-                return hay - pointer_n
+        r = 0
+        l = 0
+        if len(haystack) < len(needle):
+            return -1
+        while l < len(haystack):
+            r = l
+            i = 0
+            while r < len(haystack) and i < len(needle) and haystack[r]==needle[i]:
+                r+=1
+                i+=1
+            if i==len(needle):
+                return l
+            l+=1
         return -1
