@@ -54,7 +54,7 @@ class MyLinkedList:
         if node.next == self.head:
             self.head = self.head.next
         else:
-            node.next = node.next.next if node.next else None
+            node.next = node.next.next 
         self.size -=1
         if self.size <0:
             self.size = 0
