@@ -33,13 +33,14 @@ class Solution:
                 right.next = None
                 l_end = left.next
                 st = self.reverse(left.next)
+                #print(left.next,l_end)
                 left.next = right
                 l_end.next = r_end
                 left = l_end
                 right = l_end
-                if not start:
-                    dummy.next = st
-                    start = 1
+                # if not start:
+                #     dummy.next = st
+                #     start = 1
             else:
                 break
         return dummy.next
