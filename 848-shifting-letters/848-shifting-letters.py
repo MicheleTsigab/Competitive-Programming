@@ -5,13 +5,13 @@ class Solution:
             p[0]+=shift
             if end + 1 < len(s):
                 p[end+1] -=shift
-
-        for i in range(1,len(p)):
-            p[i] += p[i-1]
-
         ans = []
-        for i in range(len(s)):
+        for i in range(len(p)):
+            if i > 0:
+                p[i] += p[i-1]
             char = ((ord(s[i]) + p[i] - 97) % 26) + 97
             ans.append(chr(char))
+
+        
         
         return ''.join(ans)
