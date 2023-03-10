@@ -15,7 +15,7 @@ class Solution:
                 st.append(count)
                 count = 0
             else:
-                temp = st.pop() if st else 0
-                count += temp + max(count,1)
+                
+                count += st.pop() + max(count,1)
                 
         return count
