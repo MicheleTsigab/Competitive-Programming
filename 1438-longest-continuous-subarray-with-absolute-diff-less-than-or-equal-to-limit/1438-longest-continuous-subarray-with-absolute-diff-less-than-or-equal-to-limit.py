@@ -1,20 +1,24 @@
 class Solution:
     def longestSubarray(self, nums: List[int], limit: int) -> int:
+
         left, right = 0, 0
-        max_heap, min_heap = [], []
+        max_deque, min_deque = deque(), deque()
         res = 0
 
         while right < len(nums):
-            heapq.heappush(max_heap, (-nums[right], right))
-            heapq.heappush(min_heap, (nums[right], right))
+            while max_deque and nums[right] > max_deque[-1]:
+                max_deque.pop()
+            while min_deque and nums[right] < min_deque[-1]:
+                min_deque.pop()
+            max_deque.append(nums[right])
+            min_deque.append(nums[right])
 
-            while -max_heap[0][0] - min_heap[0][0] > limit:
-                if max_heap[0][1] < min_heap[0][1]:
-                    left = max(left, max_heap[0][1] + 1)
-                    heapq.heappop(max_heap)
-                else:
-                    left = max(left, min_heap[0][1] + 1)
-                    heapq.heappop(min_heap)
+            while max_deque and min_deque and max_deque[0] - min_deque[0] > limit:
+                if max_deque[0] == nums[left]:
+                    max_deque.popleft()
+                if min_deque[0] == nums[left]:
+                    min_deque.popleft()
+                left += 1
 
             res = max(res, right - left + 1)
             right += 1
