@@ -11,7 +11,7 @@ class Solution:
         
         turn = 1 player =1
         """
-
+        @lru_cache(maxsize=1000)
         def take(turn,i,j):
             if i==j:
                 return turn * nums[i]
