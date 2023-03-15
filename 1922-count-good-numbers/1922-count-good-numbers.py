@@ -21,8 +21,9 @@ class Solution:
         mod = 10**9 + 7
         if n==0:
             return 5
+        ans = (power(5*4,n//2,mod))%(mod)
         if n%2==0:
-            return (power(5*4,n//2,mod))%(mod)
-        else:
-            return 5 * power(20,(n - 1)//2,mod)%(mod)
+            return ans
+        
+        return (5 * ans)%mod
         
