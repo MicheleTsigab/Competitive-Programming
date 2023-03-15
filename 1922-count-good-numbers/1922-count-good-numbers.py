@@ -8,11 +8,21 @@ class Solution:
         even = 5
         prime = 4
         """
+        def power(x,n,mod):
+            if n==0:
+                return 1
+            if n==1:
+                return x%mod
+            if n%2==0:
+                return power(x%mod*x%mod,n//2,mod)%mod
+            else:
+                return (x%mod)*power(x%mod*x%mod,n//2,mod)%mod
+
         mod = 10**9 + 7
         if n==0:
             return 5
         if n%2==0:
-            return (pow(5*4,n//2,mod))%(10**9 + 7)
+            return (power(5*4,n//2,mod))%(mod)
         else:
-            return 5 * pow(20,(n - 1)//2,mod)%(10**9 + 7)
+            return 5 * power(20,(n - 1)//2,mod)%(mod)
         
