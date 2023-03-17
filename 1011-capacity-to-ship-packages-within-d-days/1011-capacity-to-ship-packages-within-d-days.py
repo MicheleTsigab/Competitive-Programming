@@ -3,11 +3,11 @@ class Solution:
         """
         [1,2,3,4,5,6,7,8,9,10], days = 5
          0 1 2 3 4 5 6 7 8 9
-         0  11 55
-         l m
+         sum(weights) ---ship them in one day
+         0 
         """
         #binary search
-        l = 0
+        l = 1
         r = sum(weights)
         ans = math.inf
         while l<=r:
