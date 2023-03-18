@@ -11,15 +11,11 @@ class BrowserHistory:
         self.cur +=1
 
     def back(self, steps: int) -> str:
-        while steps and self.cur:
-            steps -=1
-            self.cur-=1
+        self.cur = max(0, self.cur - steps)
         return self.st[self.cur]
 
     def forward(self, steps: int) -> str:
-        while steps and self.cur < len(self.st) - 1:
-            steps-=1
-            self.cur+=1
+        self.cur = min(len(self.st)-1,steps + self.cur)
         return self.st[self.cur]
 
 
