@@ -1,1 +1,1 @@
-​
+sort by start, store their original index, then do binary search for each interval
