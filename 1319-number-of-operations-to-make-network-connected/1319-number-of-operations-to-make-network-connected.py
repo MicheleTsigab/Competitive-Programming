@@ -11,15 +11,14 @@ class Solution:
         visited = set()
         
         def search(node):
-            component = 1
             visited.add(node)
             
             for g in graph[node]:
                 if g in visited:
                     continue
                 visited.add(g)
-                component+=search(g)
-            return component
+                search(g)
+
                 
         count = 0
         for i in range(n):
