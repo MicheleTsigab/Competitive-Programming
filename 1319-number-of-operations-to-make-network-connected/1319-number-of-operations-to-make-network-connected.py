@@ -12,7 +12,6 @@ class Solution:
         
         def search(node):
             visited.add(node)
-            
             for g in graph[node]:
                 if g in visited:
                     continue
