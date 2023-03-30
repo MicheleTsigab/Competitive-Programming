@@ -16,6 +16,8 @@ class Solution:
                 return False
 
             left_bool = isvalid(lb, node.val,node.left)
+            if not left_bool:
+                return False
             right_bool = isvalid(node.val,ub,node.right)
-            return left_bool and right_bool
+            return right_bool
         return isvalid(-inf,inf,root)
