@@ -11,7 +11,7 @@ class Solution:
             if not node:
                 return
             inorder(node.left)
-            arr.append(node.val)
+            arr.append(node)
             inorder(node.right)
         inorder(root)
         return self.sortedArrayToBST(arr,l = 0, r = len(arr) -1)
@@ -21,7 +21,7 @@ class Solution:
         if l > r:
             return None
         mid = ceil((l + r)/2)
-        root = TreeNode(val = nums[mid])
+        root = nums[mid]
         root.left = self.sortedArrayToBST(nums,l,mid - 1)
         root.right = self.sortedArrayToBST(nums,mid + 1,r)
         return root
