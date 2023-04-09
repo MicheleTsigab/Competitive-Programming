@@ -14,16 +14,18 @@ class Solution:
                 return 0 #arbitrary num
             visited.add(node)
             path.add(node)
-            idx = ord(colors[node]) - ord('a')
-            node_color[node][idx] = 1
+
             
             for nei in g[node]:
                 if color_value(nei) == inf:
                     return inf
                 for i in range(26):
                     node_color[node][i] = max(
-                        (1 if i==idx else 0) + node_color[nei][i],
+                        node_color[nei][i],
                         node_color[node][i])
+        
+            idx = ord(colors[node]) - ord('a')
+            node_color[node][idx] += 1
             path.remove(node)
             return max(node_color[node])
         visited, path = set(), set()
