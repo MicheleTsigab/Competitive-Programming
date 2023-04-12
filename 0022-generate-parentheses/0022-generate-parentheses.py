@@ -13,7 +13,7 @@ class Solution:
             
             if op > 0:
                 generate(op-1,cl,path + ['('])
-            if n - op > n - cl and cl > 0:
+            if n - op > n - cl:
                 generate(op,cl-1,path + [')'])
         generate(n,n,[])
         return res
