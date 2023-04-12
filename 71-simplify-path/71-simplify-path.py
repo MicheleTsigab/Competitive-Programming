@@ -1,6 +1,6 @@
 class Solution:
     def simplifyPath(self, path: str) -> str:
-        st = ['/']
+        st = []
         m = path.split('/')
         #print(m)
         for i in range(len(m)):
@@ -8,12 +8,11 @@ class Solution:
             if p=='' or p=='.':
                 continue
             if p=='..':
-                if len(st) > 1:
-                    st.pop()
+                if st:
                     st.pop()
                 continue
             st.append(p)
-            st.append('/')
-        if len(st) > 1 and st[-1]=='/':
-            st.pop()
-        return ''.join(st)
+        
+        # if len(st) > 1 and st[-1]=='/':
+        #     st.pop()
+        return '/' + '/'.join(st) 
