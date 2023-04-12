@@ -20,16 +20,8 @@ class Solution:
             if len(path) >= 3:
                 if path[-1] != (path[-2] + path[-3]):
                     return False
-            if i == len(num):
-
-                good = False    
-                for x in range(2,len(path)):
-                    if path[x] == (path[x-1] + path[x-2]):
-                        good = True
-                    else:
-                        break
-
-                return good
+            if i == len(num) and len(path) >=3:
+                return True
             for j in range(i,len(num)):
                 new = num[i:j+1]
                 
