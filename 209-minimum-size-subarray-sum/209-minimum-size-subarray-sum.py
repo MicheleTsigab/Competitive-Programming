@@ -6,7 +6,7 @@ class Solution:
         ans = inf
         for right,n in enumerate(pre):
             if n >= target:
-                left = bisect_right(pre,n - target,hi = right)
+                left = bisect_right(pre,n - target)
                 ans = min(ans, right - left + 1)
                 
         return ans if ans!=inf else 0
