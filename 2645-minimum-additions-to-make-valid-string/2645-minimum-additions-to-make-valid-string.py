@@ -11,7 +11,7 @@ class Solution:
                 tar_ptr += 1
                 count += 1
 
-            if word[word_ptr] == target[tar_ptr]:
+            else:
                 word_ptr += 1
                 tar_ptr += 1
                 
