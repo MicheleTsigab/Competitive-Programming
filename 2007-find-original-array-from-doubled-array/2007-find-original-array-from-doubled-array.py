@@ -4,16 +4,12 @@ class Solution:
         count=Counter(changed)
         res =[]
         for i in changed:
-            if i in count and i*2 in count: 
+            if count[i] and count[i*2]: 
                 res.append(i)
                 count[i]-=1
                 count[i*2]-=1
-                if count[i]<=0:
-                    del count[i]
-                if count[i*2]<=0:
-                    del count[i*2]
-        if len(res)*2==len(changed) and len(count)==0:
+        if len(res)*2==len(changed) and all(not count[i] for i in count):
             return res
-        else:
-            []
+        
+        return []
         
