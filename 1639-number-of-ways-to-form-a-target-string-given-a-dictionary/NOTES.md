@@ -1,1 +1,1 @@
-​
+use count dict, to map character count for each index [(idx,char)],
