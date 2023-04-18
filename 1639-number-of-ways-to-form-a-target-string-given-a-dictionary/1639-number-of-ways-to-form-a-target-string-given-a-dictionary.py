@@ -18,9 +18,10 @@ class Solution:
             
             cache[(tar_idx, word_idx)] = dfs(tar_idx, word_idx + 1)
             needed = target[tar_idx]
-            cache[(tar_idx,word_idx)] += (
-                char_idx[(word_idx,needed)] * dfs(tar_idx + 1, word_idx + 1)
-            )
+            if char_idx[(word_idx, needed)]: #there is a match
+                cache[(tar_idx,word_idx)] += (
+                    char_idx[(word_idx,needed)] * dfs(tar_idx + 1, word_idx + 1)
+                )
             return cache[(tar_idx, word_idx)] % mod
 
         return dfs(0,0)
