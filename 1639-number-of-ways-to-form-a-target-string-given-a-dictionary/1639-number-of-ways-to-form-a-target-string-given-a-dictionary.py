@@ -5,23 +5,22 @@ class Solution:
         for w in words:
             for j,c in enumerate(w):
                 char_idx[(j,c)] += 1
-                
-        cache = {} #target_idx,word_idx == to number of ways we can form
         
+        
+        @lru_cache(None)
         def dfs(tar_idx,word_idx):
             if tar_idx == len(target):
                 return 1
             if word_idx == len(words[0]):
                 return 0
-            if (tar_idx,word_idx) in cache:
-                return cache[(tar_idx,word_idx)]
             
-            cache[(tar_idx, word_idx)] = dfs(tar_idx, word_idx + 1)
+            # choosing next index
+            res = dfs(tar_idx, word_idx + 1)
             needed = target[tar_idx]
             if char_idx[(word_idx, needed)]: #there is a match
-                cache[(tar_idx,word_idx)] += (
+                res += (
                     char_idx[(word_idx,needed)] * dfs(tar_idx + 1, word_idx + 1)
                 )
-            return cache[(tar_idx, word_idx)] % mod
-
+ 
+            return res % mod
         return dfs(0,0)
