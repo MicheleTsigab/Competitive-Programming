@@ -6,10 +6,10 @@
 #         self.right = right
 class Solution:
     def longestZigZag(self, root: Optional[TreeNode]) -> int:
-        @lru_cache(None)
+        @lru_cache(None)     
         def dfs(node, go_left,go_right):
             if not node:
-                return 0
+                return -1
             
             g_left = 0
             if go_left:
@@ -18,11 +18,12 @@ class Solution:
             g_right = 0
             if go_right:
                 g_right = 1 + dfs(node.right, go_left = True, go_right = False)
+                
             start_left = 0
             start_right = 0
             if go_left and go_right:
-                start_left = dfs(node.left, go_left = True, go_right = True)
-                start_right = dfs(node.right, go_left = True, go_right = True)
+                start_left = dfs(node.left, go_left, go_right)
+                start_right = dfs(node.right, go_left, go_right)
             
             return max(g_left, start_left, g_right, start_right)
-        return  dfs(root,True,True) - 1
+        return  dfs(root,True,True)
