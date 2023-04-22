@@ -11,12 +11,13 @@ class Solution:
         q.append((root,1))
         
         while q:
+            ans = max(ans, q[-1][1] - q[0][1] + 1)
+            
             for i in range(len(q)):
                 cur,l = q.popleft()
                 if cur.left:
                     q.append((cur.left,2*l))
                 if cur.right:
                     q.append((cur.right,2*l + 1))
-            if len(q) > 1:
-                ans = max(ans, q[-1][1] - q[0][1] + 1)
+            
         return ans
