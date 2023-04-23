@@ -18,11 +18,6 @@ class Solution:
                     return True
                 path.pop()
             return False
-
-        for i in range(len(num)):
-            c = num[:i+1]
-            if len(c) > 1 and num[0]=='0': #leading zero
-                return False
-            if search(i+1,[int(c)]):
-                return True
-        return False
+        
+        return search(0,[])
+        
