@@ -1,6 +1,6 @@
 class Solution:
     def isAdditiveNumber(self, num: str) -> bool:
-        
+        @lru_cache(None)
         def search(i,path):
             if len(path) >= 3:
                 if path[-1] != (path[-2] + path[-3]):
@@ -12,12 +12,17 @@ class Solution:
 
                 if len(new) > 1 and new[0] == '0':
                     continue
+                x = int(new)
+                if not path:
+                    temp = (x,)
+                elif len(path) >= 2:
+                    temp = (path[-2],path[-1],x)
+                else:
+                    temp = (path[-1],x)
                     
-                path.append(int(new))
-                if search(j+1,path):
+                if search(j+1,temp):
                     return True
-                path.pop()
             return False
         
-        return search(0,[])
+        return search(0,())
         
