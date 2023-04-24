@@ -12,8 +12,8 @@ class Solution:
         
         while q:
             ans = max(ans, q[-1][1] - q[0][1] + 1)
-            
-            for i in range(len(q)):
+            x = len(q)
+            for i in range(x):
                 cur,l = q.popleft()
                 if cur.left:
                     q.append((cur.left,2*l))
