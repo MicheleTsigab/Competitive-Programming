@@ -6,7 +6,7 @@
 #         self.right = right
 class Solution:
     def verticalTraversal(self, root: Optional[TreeNode]) -> List[List[int]]:
-        min_heap = []
+        arr = []
         q = deque()
         row = 0
         col = 0
@@ -15,21 +15,24 @@ class Solution:
         while q:
             node, row,col = q.popleft()
             
-            heapq.heappush(min_heap,[col,row,node.val])
+            arr.append([col,row,node.val])
             if node.left:
                 q.append([node.left,row+1,col-1])
             if node.right:
                 q.append([node.right,row+1,col+1])
-        #print(min_heap)
+
         res = []
-        while min_heap:
-            vpos,row,node = heapq.heappop(min_heap)
-            temp = []
-            temp.append(node)
-            
-            while min_heap and min_heap[0][0] == vpos:
-                temp.append(heapq.heappop(min_heap)[2])
-                
+        arr.sort()
+        comp = arr[0][0]
+        temp = []
+        for col,row,node in arr:
+            if col == comp:
+                temp.append(node)
+            else:
+                res.append(temp)
+                comp = col
+                temp = [node]
+        if res[-1][-1] != temp[0]:
             res.append(temp)
         return res
                 
