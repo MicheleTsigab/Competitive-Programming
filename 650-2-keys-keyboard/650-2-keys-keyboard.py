@@ -10,10 +10,7 @@ class Solution:
             
             #take choice one
             ans = 2 + search(str_len * 2,str_len)
-            temp = 0
-            if copy == -1:
-                temp = 2 + search(str_len * 2,str_len)
-            else:
-                temp = 1 + search(str_len + copy,copy)
-            return min(temp,ans)
+            if copy!=-1:
+                ans = min(ans, 1 + search(str_len + copy,copy))
+            return ans
         return search(1,-1)
