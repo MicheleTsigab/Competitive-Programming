@@ -26,9 +26,9 @@ class Solution {
         return alt;
     }
     public static long cal(int p){
-        long val = 1L;
+        long val = 1;
         while(p>0){
-            val*=(2L);
+            val*=2;
             p--;
         }
         return val;
