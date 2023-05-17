@@ -6,23 +6,20 @@
 class Solution:
     def pairSum(self, head: Optional[ListNode]) -> int:
         """
-        5 4 1 2
-        l
-              r
         #reverse second half
         #compute max sum
         """
         dummy = ListNode(0,head)
         fast = dummy
         slow = head
-        while fast and fast.next:
+        while fast and fast.next: #locate half
             fast = fast.next.next
             slow = slow.next
             
-        right = self.reverse(slow)
+        right = self.reverse(slow) #reverse half
         left = head
         max_sum = 0
-        while right and left:
+        while right and left: #compute maximum twin sum
             max_sum = max(max_sum,right.val + left.val)
             left= left.next
             right= right.next
