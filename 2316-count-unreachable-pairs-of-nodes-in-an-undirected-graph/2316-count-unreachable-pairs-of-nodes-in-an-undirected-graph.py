@@ -1,29 +1,26 @@
 class Solution:
     def countPairs(self, n: int, edges: List[List[int]]) -> int:
-        graph = {edge:[] for edge in range(n)}
+        graph = defaultdict(list)
         
-        for i,j in edges:
-            graph[i].append(j)
-            graph[j].append(i)
-        visited = set()
-        
-        def search(node):
-            component = 1
-            visited.add(node)
+        for u,v in edges:
+            graph[u].append(v)
+            graph[v].append(u)
             
-            for g in graph[node]:
-                if g in visited:
-                    continue
-                visited.add(g)
-                component+=search(g)
-            return component
-                
-        count = 0
-        rn = n #remaining nodes
+        seen = set()
+        def dfs(node):
+            seen.add(node)
+            comp = 1
+            for nei in graph[node]:
+                if nei not in seen:
+                    comp+=dfs(nei)
+            return comp
+        x = n
+        ans = 0
         for i in range(n):
-            if i not in visited:
-                component = search(i)
-                count += component * (rn - component)
-                rn -= component
-
-        return count
+            if i not in seen:
+                comp = dfs(i)
+                rem = max(0,x - comp)
+                ans += comp * rem
+                x-=comp
+        return ans
+                
