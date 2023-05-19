@@ -3,16 +3,18 @@ class Solution:
         
         color = dict()
         def dfs(node):
+            ans = True
             for neighbour in graph[node]:
                     if neighbour in color:
                         if color[neighbour] == color[node]:
-                            return False
+                            ans = False
+                            break
 
                     else:
                         color[neighbour] = not color[node]
                         if not dfs(neighbour):
                             return False
-            return True
+            return ans
         ans = True
         for i in range(len(graph)):
             if i not in color:
