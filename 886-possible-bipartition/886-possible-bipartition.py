@@ -1,9 +1,9 @@
 class Solution:
     def possibleBipartition(self, n: int, dislikes: List[List[int]]) -> bool:
-        graph = defaultdict(list)
+        graph = [[] for i in range(n)]
         for u,v in dislikes:
-            graph[u].append(v)
-            graph[v].append(u)
+            graph[u-1].append(v-1)
+            graph[v-1].append(u-1)
         def dfs(node):
             
             
@@ -19,7 +19,7 @@ class Solution:
         
         ans = True
         color = dict()
-        for i in range(1,n+1):
+        for i in range(n):
             if i not in color:
                 color[i] = True
                 ans =ans and dfs(i)
