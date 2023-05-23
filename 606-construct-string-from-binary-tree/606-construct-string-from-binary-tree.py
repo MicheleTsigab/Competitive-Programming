@@ -22,12 +22,4 @@ class Solution:
                 ans.append(')')
             
         dfs(root) 
-        x = []  
-    #  print(ans)
-        for i in range(len(ans)):
-            if ans[i] == '(' and ans[i+1]==')':
-                continue
-            if ans[i]==')' and ans[i-1]=='(':
-                continue
-            x.append(ans[i])
         return ''.join(ans)
