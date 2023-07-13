@@ -18,10 +18,10 @@ class Solution:
                 # if left overlaps
                 # and our left end is also bigger than right end, we take right variab
                 #because we want minimum arrow to shoot
-                    left_start = right_start
+                #    left_start = right_start
                     left_end = right_end
             else: #if they don't overlap, we count and set the left pointer as well 
                 count +=1
-                left_start = right_start
+               # left_start = right_start
                 left_end = right_end
         return count + 1 #arrow for the last point
