@@ -28,15 +28,12 @@ class Solution:
         trie = Trie()
         for word in words:
             trie.insert(word)
-    #    print(trie.children)
-        ans = []
+        
+        #get which words can be made one character at a time
+        ans = ''
         for w in words:
             if trie.validate(w):
-                ans.append(w)
-        if not ans:
-            return ''
-        final = ans[0]
-        for w in ans:
-            if len(final) < len(w):
-                final = w
-        return final
+                if len(ans) < len(w):
+                    ans = w
+               # ans.append(w)
+        return ans
