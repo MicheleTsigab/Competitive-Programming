@@ -24,7 +24,7 @@ class Trie:
 
 class Solution:
     def longestWord(self, words: List[str]) -> str:
-        words.sort()
+    #    words.sort()
         trie = Trie()
         for word in words:
             trie.insert(word)
@@ -33,7 +33,7 @@ class Solution:
         ans = ''
         for w in words:
             if trie.validate(w):
-                if len(ans) < len(w):
+                if len(ans) < len(w) or (len(ans)==len(w) and w < ans):
                     ans = w
                # ans.append(w)
         return ans
