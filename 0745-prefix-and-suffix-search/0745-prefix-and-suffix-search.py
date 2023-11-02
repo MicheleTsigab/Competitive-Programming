@@ -7,7 +7,7 @@ class WordFilter:
     def __init__(self, words: List[str]):
         self.t = TrieNode()        
         for idx,word in enumerate(words):
-            for i in range(len(word)+1):
+            for i in range(len(word)):
                 cur = self.t
                 cur.idx = idx
                 suffix = word[i:]
