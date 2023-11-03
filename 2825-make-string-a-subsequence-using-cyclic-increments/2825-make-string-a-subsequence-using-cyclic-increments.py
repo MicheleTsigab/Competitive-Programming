@@ -9,13 +9,14 @@ class Solution:
                j
                
         """
-        
+        #o(N+M)
+        #o(26)
         i,j = 0,0
         alphabet1 = list(string.ascii_lowercase)
         alphabet2 = alphabet1[1:] + ['a']
         ch = {x:y for x,y in zip(alphabet1,alphabet2)}
         while i < len(str1) and j < len(str2):
-            if str1[i]==str2[j] or ch[str1[i]]==str2[j]:
+            if str1[i]==str2[j] or (ord(str1[i])-ord('a')+1)%26==ord(str2[j])-ord('a'):
                 j+=1
                 i+=1
             else:
