@@ -9,7 +9,7 @@ class Solution:
                 return 0
             if (i,am) in dp:
                 return dp[(i,am)]
-            ans = can(i,am-coins[i-1]) + can(i+1,am)
+            ans = can(i,am-coins[i]) + can(i+1,am)
             dp[(i,am)] = ans
             return ans
         return can(0,amount)
