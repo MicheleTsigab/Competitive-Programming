@@ -8,7 +8,6 @@ class Solution:
             right = len(nums)-1
             while left <= right:
                 mid = (left + right)//2
-
                 if end1 in range(nums[mid]-k,nums[mid]+k+1):
                     left = mid + 1
                 else:
