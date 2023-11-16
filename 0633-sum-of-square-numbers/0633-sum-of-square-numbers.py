@@ -1,6 +1,6 @@
 class Solution:
     def judgeSquareSum(self, c: int) -> bool:
-        r = ceil(sqrt(c))
+        r = floor(sqrt(c))
         l = 0
 
         while l <= r:
