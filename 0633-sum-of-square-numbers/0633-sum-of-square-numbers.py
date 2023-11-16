@@ -1,15 +1,14 @@
 class Solution:
-    def judgeSquareSum(self, c: int) -> bool:        
-        left = 0
-        right = floor(sqrt(c))
-        while left <= right:
-            c1 = left * left + left * left
-            c2 = right * right + right * right
-            c3 = left * left + right*right
-            if c1==c or c2==c or c3==c:
+    def judgeSquareSum(self, c: int) -> bool:
+        r = ceil(sqrt(c))
+        l = 0
+
+        while l <= r:
+            tar =l*l + r*r 
+            if tar > c:
+                r-=1
+            elif tar < c:
+                l+=1
+            else:
                 return True
-            elif c3 > c:
-                right -=1
-            elif c3 < c:
-                left +=1
         return False
