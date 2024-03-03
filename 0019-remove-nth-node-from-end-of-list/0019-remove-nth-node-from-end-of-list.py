@@ -15,11 +15,15 @@ class Solution:
         left = x
         right = x.next
         
-        for i in range(n):
+        while right or n:
+            if n:
+                right = right.next
+                n-=1
+                continue
             right = right.next
-        while right:
             left = left.next
-            right = right.next
+            
+            
         left.next = left.next.next
         return x.next
             
