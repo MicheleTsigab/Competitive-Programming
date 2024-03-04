@@ -6,7 +6,7 @@
 #         self.right = right
 class Solution:
     def maxPathSum(self, root: Optional[TreeNode]) -> int:
-        ans = -inf
+        #ans = -inf
         
         
         def find(node):
@@ -14,14 +14,16 @@ class Solution:
             returns max sum without split for each node
             while also updating the global variable with the max sum with splitting
             """
-            nonlocal ans
+        #    nonlocal ans
             if not node:
-                return 0
+                return [0,-inf]
             maxleft = find(node.left)
             maxright = find(node.right)
-            max_wout_split = max(max(maxleft,maxright) + node.val,node.val)
+            ans = max(maxleft[1],maxright[1])
+            max_wout_split = max(max(maxleft[0],maxright[0]) + node.val,node.val)
             #with split
-            ans = max(maxleft + maxright + node.val,ans,max_wout_split)
-            return max_wout_split
-        find(root)
-        return ans
+            max_with_split = maxleft[0] + maxright[0] + node.val
+            ans = max(max_with_split,ans,max_wout_split)
+            return [max_wout_split,ans]
+        return max(find(root))
+        
